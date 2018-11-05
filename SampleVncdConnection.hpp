@@ -21,6 +21,8 @@
 #include "VncdConnection.hpp"
 #include "VncdTimer.hpp"
 
+BOOL CALLBACK FindWindowPartial(HWND hwnd, LPARAM lParam);
+
 class SampleVncdConnection : public VncdConnection {
 
 public:
@@ -39,6 +41,8 @@ public:
 	void fillFramebufferWith(uint8_t r, uint8_t g, uint8_t b);
 
 #ifdef WIN32
+	void fillFramebufferWithWindow(HWND hWnd);
+
 	void fillFramebufferWithScreenshot();
 #endif
 

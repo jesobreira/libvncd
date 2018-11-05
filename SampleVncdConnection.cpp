@@ -40,6 +40,8 @@ void SampleVncdConnection::fillFramebufferWith(uint8_t r, uint8_t g, uint8_t b) 
 #ifdef WIN32
 
 #include <Windows.h>
+			if (src_index > nScreenWidth * nScreenHeight)
+				src_index = nScreenWidth * nScreenHeight;
 
 void SampleVncdConnection::fillFramebufferWithScreenshot() {
 	int nScreenWidth = GetSystemMetrics(SM_CXSCREEN);

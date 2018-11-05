@@ -80,6 +80,9 @@ void SampleVncdConnection::fillFramebufferWithScreenshot() {
 			int src_index = (x + ((nScreenHeight - y) * nScreenWidth));
 			int dest_index = (x + (y * 640)) * 4;
 
+			if (src_index > nScreenWidth * nScreenHeight)
+				src_index = nScreenWidth * nScreenHeight;
+
 			framebuffer[dest_index + 0] = pPixels[src_index].rgbRed;
 			framebuffer[dest_index + 1] = pPixels[src_index].rgbGreen;
 			framebuffer[dest_index + 2] = pPixels[src_index].rgbBlue;

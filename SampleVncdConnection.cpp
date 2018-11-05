@@ -162,7 +162,7 @@ uint16_t SampleVncdConnection::getFrameHeight() {
 }
 
 std::string SampleVncdConnection::getSessionTitle() {
-	return "SampleVncdConnection";
+	return "VNCConnection";
 }
 
 void SampleVncdConnection::setCurrentStatusMessage(std::string& status) {
@@ -177,5 +177,5 @@ std::string SampleVncdConnection::requirePassword() {
 
 	// Blank: no authentication required
 	// Non-zero length: VNC authentication (DES)
-	return "test";
+	return "";
 }

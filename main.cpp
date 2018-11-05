@@ -24,5 +24,7 @@ int main(int argc, char** argv) {
 	Vncd<SampleVncdConnection> v;
 	
 	v.acceptConnections("0.0.0.0", 5900);
-	
+
+	// Alternatively, if you have a listening VNC client:
+	// v.reverseConnection("127.0.0.1", 5500);
 }

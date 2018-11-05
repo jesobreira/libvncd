@@ -32,6 +32,20 @@ public:
 	Vncd() {
 	}
 
+	void reverseConnection(const char* connectTo, short port) {
+		asio::ip::tcp::endpoint endpoint(asio::ip::address::from_string(connectTo), port);
+		asio::ip::tcp::socket socket(io_service);
+
+		// connect to remote host
+		socket.connect(endpoint);
+
+		VncdTimer timer(io_service);
+		std::shared_ptr<ConnectionAcceptor> handler = std::make_shared<ConnectionAcceptor>(std::move(socket), std::move(timer));
+		handler->notifyClient_connectionAccepted();
+
+		io_service.run();
+	}
+
 	void acceptConnections(const char* bindTo, short port) {
 
 		asio::ip::tcp::acceptor a(io_service, asio::ip::tcp::endpoint(asio::ip::tcp::v4(), port));
